@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFRITEX Checkout • $142</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #e3a932;
+            --gold-deep: #d59d28;
+            --gold-line: #d8b053;
+            --gold-soft: #ffe8b5;
+            --surface: #f7f7f4;
+            --text: #161616;
+            --muted: #565656;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: var(--text);
+            font-family: 'Poppins', system-ui, sans-serif;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        .page {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 24px 30px 18px;
+        }
+
+        .topbar {
+            min-height: 52px;
+            border-radius: 999px;
+            background: var(--gold);
+            padding: 8px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 999px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-deep);
+            font-size: 21px;
+            line-height: 1;
+        }
+
+        .brand span {
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            font-size: 21px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.92fr) minmax(340px, 1fr);
+            gap: 42px;
+            padding-top: 48px;
+            align-items: start;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+            font-size: 21px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .left-column section + section,
+        .right-column section + section {
+            margin-top: 34px;
+        }
+
+        .cart-panel {
+            background: var(--surface);
+            border-radius: 22px;
+            padding: 24px 18px 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        }
+
+        .product {
+            display: grid;
+            grid-template-columns: 94px 1fr auto;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .product + .product {
+            margin-top: 18px;
+            padding-top: 18px;
+        }
+
+        .product-frame {
+            width: 94px;
+            height: 94px;
+            border: 1.5px solid var(--gold-line);
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .product-frame img,
+        .product-frame svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .product-title {
+            margin: 10px 0 4px;
+            font-size: 18px;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        .product-copy {
+            font-size: 14px;
+            line-height: 1.35;
+            color: #252525;
+        }
+
+        .product-copy + .product-copy {
+            margin-top: 3px;
+        }
+
+        .product-price {
+            padding-top: 46px;
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .summary {
+            margin-top: 16px;
+            border-top: 1.5px solid var(--gold-line);
+            padding-top: 10px;
+        }
+
+        .summary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 7px 0;
+            font-size: 14px;
+        }
+
+        .summary-row strong {
+            font-weight: 600;
+        }
+
+        .summary-total {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1.5px solid var(--gold-line);
+            font-weight: 700;
+        }
+
+        .info-label,
+        .sub-label,
+        .field-label {
+            margin: 0 0 10px;
+            font-size: 15px;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .outlined-note {
+            min-height: 40px;
+            border: 1.5px solid var(--gold-line);
+            border-radius: 10px;
+            padding: 9px 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            line-height: 1.35;
+        }
+
+        .outlined-note strong {
+            font-weight: 700;
+        }
+
+        .fields {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .field {
+            width: 100%;
+            height: 40px;
+            padding: 0 14px;
+            border: 1.5px solid var(--gold-line);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .field::placeholder {
+            color: #545454;
+        }
+
+        .field:focus {
+            border-color: var(--gold-deep);
+            box-shadow: 0 0 0 3px rgba(227, 169, 50, 0.14);
+        }
+
+        .save-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 22px;
+        }
+
+        .save-button {
+            min-width: 67px;
+            height: 44px;
+            border: 0;
+            border-radius: 10px;
+            background: #f2f2f2;
+            color: #232323;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .delivery-methods {
+            background: var(--surface);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+        }
+
+        .delivery-option {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            padding: 11px 14px 11px 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.2s ease;
+        }
+
+        .delivery-option.selected {
+            background: var(--gold-soft);
+        }
+
+        .delivery-option-main {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .choice-dot,
+        .payment-dot {
+            flex: 0 0 auto;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-line);
+            position: relative;
+        }
+
+        .choice-dot::after,
+        .payment-dot::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .delivery-option.selected .choice-dot::after,
+        .payment-option.selected .payment-dot::after {
+            background: var(--gold);
+        }
+
+        .delivery-name {
+            display: block;
+            font-size: 18px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .delivery-copy {
+            display: block;
+            margin-top: 2px;
+            font-size: 14px;
+            line-height: 1.2;
+            color: #454545;
+        }
+
+        .delivery-price {
+            padding-top: 4px;
+            font-size: 18px;
+            line-height: 1;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .payment-options {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .payment-option {
+            border: 0;
+            background: transparent;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .payment-option i {
+            color: var(--gold-deep);
+            font-size: 16px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .proceed-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 38px;
+        }
+
+        .proceed-button {
+            width: min(438px, 100%);
+            height: 48px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--gold);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 10px 18px rgba(227, 169, 50, 0.24);
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+
+        .proceed-button:active {
+            transform: translateY(1px);
+        }
+
+        .proceed-button.is-success {
+            background: #2d9a62;
+        }
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: #1f1f1f;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 980px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page {
+                padding: 18px 16px 20px;
+            }
+
+            .topbar {
+                min-height: 48px;
+                padding: 8px 20px;
+            }
+
+            .brand span {
+                font-size: 20px;
+            }
+
+            .header-actions {
+                gap: 16px;
+                font-size: 18px;
+            }
+
+            .input-row,
+            .payment-options {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+
+            .product {
+                grid-template-columns: 84px 1fr;
+            }
+
+            .product-price {
+                grid-column: 2;
+                padding-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <header class="topbar">
+            <div class="brand">
+                <div><img src="../images/afritex logo.jpeg" alt="AFRITEX logo" class="brand-mark"></div>
+                <span>AFRITEX</span>
+                           </div>
+
+            <div class="header-actions" aria-label="Header actions">
+                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                <i class="fa-regular fa-bell" aria-hidden="true"></i>
+                <i class="fa-regular fa-circle-user" aria-hidden="true"></i>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <div class="left-column">
+                <section class="cart-panel" aria-label="Order summary">
+                    <article class="product">
+                        <div class="product-frame">
+                            <img src="../images/Zulu Bead Necklace.png" alt="Zulu Necklace">
+                        </div>
+
+                        <div>
+                            <h3 class="product-title">Zulu Necklace</h3>
+                            <div class="product-copy">Designer: Nala Couture</div>
+                            <div class="product-copy">Size: M:</div>
+                            <div class="product-copy">Qty&nbsp;&nbsp;1</div>
+                        </div>
+
+                        <div class="product-price">$17</div>
+                    </article>
+
+                    <article class="product">
+                        <div class="product-frame">
+                            <img src="../images/bakit-kimono.jpg" alt="Men's Agbada">
+                        </div>
+
+                        <div>
+                            <h3 class="product-title">Men's Agbada</h3>
+                            <div class="product-copy">Designer: Ajao Fashion</div>
+                            <div class="product-copy">Size: L</div>
+                            <div class="product-copy">Qty&nbsp;&nbsp;1</div>
+                        </div>
+
+                        <div class="product-price">$120</div>
+                    </article>
+
+                    <div class="summary">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <strong id="subtotal">$137</strong>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <strong id="shipping-display">$5</strong>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total:</span>
+                            <strong id="total">$142</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Delivery Time</h2>
+                    <div class="outlined-note">Delivery between <strong>&nbsp;22 May - 25 May</strong></div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Delivery Method</h2>
+                    <div class="delivery-methods">
+                        <button type="button" id="standard-option" class="delivery-option selected" onclick="selectDelivery('standard')">
+                            <span class="delivery-option-main">
+                                <span class="choice-dot" aria-hidden="true"></span>
+                                <span>
+                                    <span class="delivery-name">Standard</span>
+                                    <span class="delivery-copy">Estimated as - May 22</span>
+                                </span>
+                            </span>
+                            <span class="delivery-price">$5</span>
+                        </button>
+
+                        <button type="button" id="express-option" class="delivery-option" onclick="selectDelivery('express')">
+                            <span class="delivery-option-main">
+                                <span class="choice-dot" aria-hidden="true"></span>
+                                <span>
+                                    <span class="delivery-name">Express</span>
+                                    <span class="delivery-copy">Estimated as - May 25</span>
+                                </span>
+                            </span>
+                            <span class="delivery-price">$10</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section>
+                    <h2 class="section-title">Shipping Address</h2>
+                    <p class="info-label">Required</p>
+
+                    <div class="fields">
+                        <input class="field" type="text" placeholder="Name" aria-label="Name">
+                        <input class="field" type="text" placeholder="Address" aria-label="Address">
+
+                        <div class="input-row">
+                            <input class="field" type="text" placeholder="City" aria-label="City">
+                            <input class="field" type="text" placeholder="State" aria-label="State">
+                        </div>
+
+                        <input class="field" type="tel" placeholder="Phone" aria-label="Phone">
+                    </div>
+
+                    <div class="save-wrap">
+                        <button type="button" class="save-button" onclick="saveAddress()">Save</button>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Payment</h2>
+                    <p class="sub-label">Options</p>
+
+                    <div class="payment-options">
+                        <button type="button" id="card-option" class="payment-option selected" onclick="selectPayment('card')">
+                            <span class="payment-dot" aria-hidden="true"></span>
+                            <i class="fa-regular fa-credit-card" aria-hidden="true"></i>
+                            <span>Credit/Debit Card</span>
+                        </button>
+
+                        <button type="button" id="bank-option" class="payment-option" onclick="selectPayment('bank')">
+                            <span class="payment-dot" aria-hidden="true"></span>
+                            <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+                            <span>Bank Transfer</span>
+                        </button>
+                    </div>
+
+                    <div id="card-fields">
+                        <p class="field-label">Card details</p>
+
+                        <div class="fields">
+                            <input class="field" type="text" placeholder="Card Number" aria-label="Card Number">
+                            <input class="field" type="text" placeholder="Card Name" aria-label="Card Name">
+
+                            <div class="input-row">
+                                <input class="field" type="text" placeholder="MM/YY" maxlength="5" aria-label="Expiry date">
+                                <input class="field" type="text" placeholder="CVV" maxlength="4" aria-label="CVV">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <div class="proceed-wrap">
+            <button type="button" id="checkout-button" class="proceed-button" onclick="proceedCheckout()">PROCEED CHECKOUT ($142)</button>
+        </div>
+    </main>
+
+    <script>
+        const SUBTOTAL = 137;
+        let shippingCost = 5;
+
+        function currentTotal() {
+            return SUBTOTAL + shippingCost;
+        }
+
+        function updateTotals() {
+            const total = currentTotal();
+            document.getElementById('subtotal').textContent = `$${SUBTOTAL}`;
+            document.getElementById('shipping-display').textContent = `$${shippingCost}`;
+            document.getElementById('total').textContent = `$${total}`;
+            document.getElementById('checkout-button').textContent = `PROCEED CHECKOUT ($${total})`;
+        }
+
+        function selectDelivery(type) {
+            const isStandard = type === 'standard';
+            shippingCost = isStandard ? 5 : 10;
+
+            document.getElementById('standard-option').classList.toggle('selected', isStandard);
+            document.getElementById('express-option').classList.toggle('selected', !isStandard);
+
+            updateTotals();
+        }
+
+        function selectPayment(type) {
+            const isCard = type === 'card';
+            document.getElementById('card-option').classList.toggle('selected', isCard);
+            document.getElementById('bank-option').classList.toggle('selected', !isCard);
+            document.getElementById('card-fields').classList.toggle('hidden', !isCard);
+        }
+
+        function showToast(message) {
+            const existingToast = document.querySelector('.toast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            requestAnimationFrame(() => toast.classList.add('show'));
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 220);
+            }, 1800);
+        }
+
+        function saveAddress() {
+            showToast('Address saved successfully.');
+        }
+
+        function proceedCheckout() {
+            const button = document.getElementById('checkout-button');
+            if (button.disabled) {
+                return;
+            }
+
+            button.disabled = true;
+            button.textContent = 'PROCESSING...';
+
+            setTimeout(() => {
+                button.classList.add('is-success');
+                button.textContent = 'ORDER PLACED';
+                showToast(`Order placed successfully • $${currentTotal()}`);
+
+                setTimeout(() => {
+                    button.disabled = false;
+                    button.classList.remove('is-success');
+                    updateTotals();
+                }, 1300);
+            }, 800);
+        }
+
+        window.addEventListener('load', () => {
+            selectDelivery('standard');
+            selectPayment('card');
+            updateTotals();
+        });
+    </script>
+</body>
+</html>

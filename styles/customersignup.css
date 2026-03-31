@@ -1,0 +1,117 @@
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+
+body { 
+    background-color: #1a1a1a; 
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    padding: 20px;
+}
+
+.form-card {
+    background: white;
+    width: 100%; max-width: 950px;
+    padding: 35px; border-radius: 15px;
+    position: relative; text-align: center;
+}
+
+.back-arrow {
+    position: absolute; top: 20px; left: 20px;
+    background: none; border: 1px solid #ddd; border-radius: 50%; width: 30px; height: 30px; cursor: pointer;
+}
+
+h2 { font-size: 20px; margin-bottom: 25px; }
+
+.section-label { text-align: left; font-size: 15px; font-weight: 600; margin: 15px 0 8px 0; }
+
+input, select {
+    width: 100%; padding: 12px; margin-bottom: 10px;
+    border: none; border-radius: 8px; background-color: #F5D9A5; color: #333;
+}
+
+.half-width { width: 50% !important; display: block; }
+
+.phone-input { display: flex; gap: 5px; }
+.phone-input select { width: 30%; }
+
+
+.signup-btn {
+    width: 100%; padding: 12px; background-color: black; color: white;
+    border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+
+.signup-btn:hover { opacity: 0.8; }
+
+.divider { display: flex; align-items: center; margin: 20px 0; font-size: 12px; }
+.divider hr { flex: 1; border: 0.5px solid #ddd; }
+.divider span { padding: 0 10px; }
+
+.social-row { display: flex; gap: 10px; }
+.social-btn {
+    flex: 1; background-color: #F5D9A5; border: none; padding: 10px;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px; cursor: pointer;
+}
+
+.footer-text { margin-top: 25px; font-size: 10px; color: #333; }
+
+.signin-link { margin-top: 15px; font-size: 12px; color: #333; text-align: center; }
+.signin-link a { color: #000; text-decoration: none; font-weight: 600; }
+.signin-link a:hover { text-decoration: underline; }
+
+.error-message{
+    color: red; font-size: 14px; margin-bottom: 1%; display: block;
+}
+/* password toggle reveal */
+.password-wrapper { position: relative; }
+.password-wrapper input { padding-right: 40px; }
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+@media (max-width: 600px) {
+    body { padding: 10px; }
+    .form-card { padding: 20px; }
+    h2 { font-size: 18px; }
+    input, select { padding: 10px; }
+    .signup-btn { padding: 10px; }
+    .social-btn { padding: 8px; font-size: 11px; }
+}
+
+/* password criteria styles */
+.password-criteria { 
+    text-align: left; 
+    margin: 15px 0; 
+    padding: 10px; 
+    background-color: #f9f9f9; 
+    border-radius: 8px; 
+}
+
+.password-criteria p { 
+    font-size: 13px; 
+    font-weight: 600; 
+    margin-bottom: 8px; 
+}
+
+.criteria-item { 
+    font-size: 12px; 
+    margin: 6px 0; 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.criteria-symbol { 
+    font-size: 16px; 
+    font-weight: bold; 
+    color: #d32f2f; 
+    min-width: 20px; 
+}
+
+.criteria-symbol.active { 
+    color: #4caf50; 
+}
+

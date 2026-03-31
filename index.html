@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AFRITEX — Africa Woven Into Every Thread</title>
+  <link rel="stylesheet" href="styles/style.css"/>
+
+  <style>
+    /* ── CART FIX ── */
+    .topbar-cart {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; cursor: pointer;
+    }
+    .topbar-cart svg { width: 22px; height: 22px; }
+    .cart-badge {
+      position: absolute; top: 1px; right: 0px;
+      width: 15px; height: 15px;
+      background: #E8A020; color: #fff;
+      font-size: .58rem; font-weight: 700; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ── HERO IMAGE ── */
+    .hero-image {
+      width: 210px; height: 210px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .hero-img-wrap {
+      width: 100%; height: 100%;
+      background: linear-gradient(155deg,#fff 0%,#fff 100%);
+      display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+    }
+    .hero-img-wrap svg { width: 78%; height: 88%; }
+
+    /* ── DESIGNER PHOTO CARDS ── */
+    .designer-card-img { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+    .d-photo {
+      width: 100%; height: 100%;
+      display: flex; align-items: flex-end; justify-content: center; overflow: hidden;
+    }
+    .d-photo svg { width: 70%; height: 88%; }
+    .dp1 { background: linear-gradient(170deg,#e0b090 0%,#a06040 45%,#5a2810 100%); }
+    .dp2 { background: linear-gradient(170deg,#c89870 0%,#886040 45%,#4a2810 100%); }
+    .dp3 { background: linear-gradient(170deg,#e8d0a0 0%,#c09860 45%,#785828 100%); }
+    .dp4 { background: linear-gradient(170deg,#b07850 0%,#784830 45%,#3a1808 100%); }
+    .dp5 { background: linear-gradient(170deg,#c08860 0%,#885040 45%,#502018 100%); }
+    .dp6 { background: linear-gradient(170deg,#d0a878 0%,#a07040 45%,#603018 100%); }
+    .dp7 { background: linear-gradient(170deg,#c08870 0%,#906050 45%,#502818 100%); }
+    .dp8 { background: linear-gradient(170deg,#b89070 0%,#906850 45%,#504030 100%); }
+
+    /* ── PRODUCT PHOTOS ── */
+    .product-card-img { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+    .p-photo {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p-photo svg { width: 58%; height: 72%; filter: drop-shadow(0 6px 14px rgba(0,0,0,.28)); }
+    .pp1 { background: linear-gradient(145deg,#f5a030 0%,#c06010 50%,#7a3000 100%); }
+    .pp2 { background: linear-gradient(145deg,#2a5a20 0%,#183a10 55%,#0a1808 100%); }
+    .pp3 { background: linear-gradient(145deg,#4a1060 0%,#2a0838 55%,#180420 100%); }
+    .pp4 { background: linear-gradient(145deg,#c0a020 0%,#806800 55%,#403400 100%); }
+    .pp5 { background: linear-gradient(145deg,#183860 0%,#102040 55%,#081018 100%); }
+    .pp6 { background: linear-gradient(145deg,#8a1010 0%,#501010 55%,#280808 100%); }
+    .pp7 { background: linear-gradient(145deg,#285020 0%,#183810 55%,#0c2008 100%); }
+
+    /* ── STYLE CARDS ── */
+    .style-card { border-radius:8px; overflow:hidden; position:relative; aspect-ratio:3/4; cursor:pointer; }
+    .s-photo {
+      width:100%; height:100%;
+      display:flex; align-items:flex-end; justify-content:center;
+      overflow:hidden; transition: transform .35s ease;
+    }
+    .style-card:hover .s-photo { transform: scale(1.05); }
+    .s-photo svg { width:65%; height:82%; }
+    .sp1 { background: linear-gradient(165deg,#c8a060 10%,#7a4820 55%,#2a1008 100%); }
+    .sp2 { background: linear-gradient(165deg,#6080c0 10%,#304080 55%,#101840 100%); }
+    .sp3 { background: linear-gradient(165deg,#d4a870 10%,#8a5830 55%,#3a2010 100%); }
+    .sp4 { background: linear-gradient(165deg,#b088c0 10%,#6a3880 55%,#2a1040 100%); }
+
+    /* ── FEATURE BANNER IMG ── */
+    .feat-img-box {
+      width:100%; height:100%; min-height:340px;
+      background: linear-gradient(155deg,#1a0a00 0%,#6a2a08 35%,#d08018 65%,#f5b030 85%,#e8c860 100%);
+      display:flex; align-items:flex-end; justify-content:center; overflow:hidden;
+    }
+    .feat-img-box svg { width:52%; height:86%; }
+
+    /* ── TESTIMONIAL AVATARS ── */
+    .testimonial-avatar {
+      width:48px; height:48px; border-radius:50%;
+      overflow:hidden; flex-shrink:0;
+      display:flex; align-items:flex-end; justify-content:center;
+    }
+    .testimonial-avatar svg { width:80%; height:85%; }
+    .tav1 { background: linear-gradient(155deg,#d4906a,#8a4820); }
+    .tav2 { background: linear-gradient(155deg,#a07850,#503818); }
+    .tav3 { background: linear-gradient(155deg,#c8a878,#785838); }
+    .tav4 { background: linear-gradient(155deg,#b07858,#603828); }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       MOBILE NAV OVERLAY
+  ═══════════════════════════════════════ -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#designers">Designers</a>
+    <a href="#trending">Trending</a>
+    <a href="#styles">Find Your Style</a>
+    <a href="#community">Community</a>
+    <div class="mobile-auth">
+      <a href="pages/customersignin.html" class="btn-login-mobile">Login</a>
+      <a href="pages/customersignup.html" class="btn-signup-mobile">Sign Up</a>
+    </div>
+    <a href="pages/designersignup.html" class="btn-sell mobile-sell">Sell on AFRITEX</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       TOPBAR
+  ═══════════════════════════════════════ -->
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="topbar-logo">
+        <div class="logo-text-wrap">
+          <div><img src="images/Afritex Logo.png" alt="AFRITEX Logo">
+          </div>
+          <span></span>
+        </div>
+      </a>
+
+      <!-- Nav -->
+      <nav class="topbar-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="#designers">Designers</a>
+        <a href="#trending">Trending</a>
+        <a href="#styles">Find Your Style</a>
+        <a href="#community">Community</a>
+      </nav>
+      <nav class="navbar">
+  <input type="text" placeholder="Search designers, products" />
+</nav>
+      <!-- SHOPPING CART SVG -->
+      <div 
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="9" cy="21" r="1.5" fill="#333"/>
+          <circle cx="20" cy="21" r="1.5" fill="#333"/>
+        </svg>
+      </div>
+      <!-- Actions -->
+      <div class="topbar-actions">
+        <a href="pages/customersignin.html" class="btn-login">Login</a>
+        <a href="pages/customersignup.html" class="btn-signup">Sign Up</a>
+
+        <!-- Cart -->
+        <div class="topbar-cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            <circle cx="9" cy="21" r="1.5" fill="#333"/>
+            <circle cx="20" cy="21" r="1.5" fill="#333"/>
+          </svg>
+          <span class="cart-badge">0</span>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="hamburger-btn" onclick="toggleMobileNav()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+      </div>
+      <a href="pages/designersignup.html"><button class="btn-sell">Sell on AFRITEX</button></a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">Africa Woven Into Every<br/>Thread</h1>
+      <p class="hero-subtitle">
+        Discover fashion created by African designers where culture,
+        craftsmanship, and modern style come together.
+        <strong>Each piece tells a story.<br/>Each designer carries a legacy.</strong>
+      </p>
+      <p class="hero-tagline">Support authentic African fashion across the continent.</p>
+      <div class="hero-actions">
+        <a href="pages/customer-product-page.html" class="btn-explore">Explore Designers</a>
+        <a href="pages/designersignin.html" class="btn-sell-designs">Sell Your Designs</a>
+      </div>
+      <p class="hero-stats">Trusted by 2M+ African fashion lovers across the continent.</p>
+    </div>
+
+    <div class="hero-img-wrap reveal">
+      <img src="images/Afritex Logo.png" alt="AFRITEX Hero" class="hero-img"/>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ═══════════════════════════════════════
+       DESIGNERS SECTION
+  ═══════════════════════════════════════ -->
+  <section class="designers-section" id="designers">
+    <div class="section-wrap">
+
+      <div class="section-header reveal">
+        <h2 class="section-title-lg">Meet The Designers Shaping African Fashion</h2>
+        <p class="section-desc">From Lagos to Nairobi, Accra to Johannesburg — AFRITEX brings together designers redefining African style for the world. Discover their collections, their stories, and the craft behind every piece.</p>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="designers-grid">
+
+        <div class="card reveal">
+          <img src="images/Zuri Atelier Image.png" alt="Zuri Atelier"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Zuri Atelier</div>
+            <div class="designer-location">Nairobi, Kenya</div>
+            <div class="designer-tag">Modern &amp; Contemporary</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/Nala Couture Image.png" alt="Nala Couture"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Nala Couture</div>
+            <div class="designer-location">Nairobi, Kenya</div>
+            <div class="designer-tag">Luxury Fashion</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/Amina Threads.png" alt="Amina Threads"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Amina Threads</div>
+            <div class="designer-location">Dakar, Senegal</div>
+            <div class="designer-tag">Traditional Wear</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/Ubanturu Image.png" alt="Ubanturu Wearhouse"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Ubanturu Wearhouse</div>
+            <div class="designer-location">Johannesburg, SA</div>
+            <div class="designer-tag">Modern Casual</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+      </div>
+      <!-- /row 1 -->
+
+      <!-- Row 2 -->
+      <div class="designers-grid" style="margin-top:1.25rem;">
+
+        <div class="card reveal">
+          <img src="images/Habiba image.png" alt="Habibas Designs"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Habibas Designs</div>
+            <div class="designer-location">Lagos, Nigeria</div>
+            <div class="designer-tag">Contemporary Modern Wear</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/makana image.png" alt="Makena Studio"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Makena Studio</div>
+            <div class="designer-location">Nairobi, Kenya</div>
+            <div class="designer-tag">Afro-Modern Streetwear</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/Adjao Image.png" alt="Adjao Fashion House"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Adjao Fashion House</div>
+            <div class="designer-location">Accra, Ghana</div>
+            <div class="designer-tag">Luxury Afrocan</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <img src="images/Kofi image.png" alt="Kofi Urban Studio"/>
+          <div class="designer-card-body">
+            <div class="designer-name">Kofi Urban Studio</div>
+            <div class="designer-location">Accra, Ghana</div>
+            <div class="designer-tag">Afro Streetwear</div>
+            <a href="#" class="btn-explore-sm">Explore Collection</a>
+          </div>
+        </div>
+
+      </div><!-- /row 2 -->
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FEATURE BANNER
+  ═══════════════════════════════════════ -->
+  <section class="feature-banner">
+    <div class="feature-banner-inner">
+
+      <div class="feature-banner-img">
+        <img src="images/Fabrics image.png" alt="African Fabrics"/>
+      </div>
+
+      <div class="feature-banner-content reveal">
+        <h2 class="feature-banner-title">Africa Woven Into Every<br/>Thread</h2>
+        <p class="feature-banner-desc">Fashion across Africa is not one story — it is thousands. From ceremonial garments to everyday street culture, discover styles shaped by heritage, creativity, and bold expression.</p>
+        <p class="feature-banner-sub">A growing continent celebrating the African spirit.</p>
+        <a href="#" class="btn-banner">To share the story of Afritex</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TRENDING
+  ═══════════════════════════════════════ -->
+  <section class="trending-section" id="trending">
+    <div class="section-wrap">
+
+      <div class="section-header reveal">
+        <h2 class="section-title-lg">TRENDING ACROSS AFRITEX</h2>
+        <p class="section-desc">These pieces are catching eyes across the continent — worn, shared, and loved by fashion enthusiasts everywhere.</p>
+      </div>
+
+      <div class="trending-grid">
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/royal ankara.png" alt="Royal Ankara Maxi Dress"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Royal Ankara Maxi Dress</div>
+            <div class="product-designer">Zuri Atelier</div>
+            <div class="product-price">$85</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/afrostreet.png" alt="AfriBeat Graphic Hoodie"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">AfriBeat Graphic Hoodie</div>
+            <div class="product-designer">Kofi Urban Studio</div>
+            <div class="product-price">$55</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/empress kente.png" alt="Empress Kente Evening Gown"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Empress Kente Evening Gown</div>
+            <div class="product-designer">Adjao Fashion House</div>
+            <div class="product-price">$180</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/safari linen.png" alt="Safari Linen Two-Piece Set"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Safari Linen Two-Piece Set</div>
+            <div class="product-designer">Makena Studio</div>
+            <div class="product-price">$95</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/dansiki shirt.png" alt="Contemporary Dashiki Shirt"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Contemporary Dashiki Shirt</div>
+            <div class="product-designer">Ubunturu Wearhouse</div>
+            <div class="product-price">$55</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/ankara blazer.png" alt="Luxury Ankara Blazer"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Luxury Ankara Blazer</div>
+            <div class="product-designer">Nala Couture</div>
+            <div class="product-price">$135</div>
+          </div>
+        </div>
+
+        <div class="product-card reveal">
+          <div class="product-card-img">
+            <img src="images/handwoven crossbag.png" alt="Handwoven Beaded Crossbag"/>
+          </div>
+          <div class="product-card-body">
+            <div class="product-name">Handwoven Beaded Crossbag</div>
+            <div class="product-designer">Amina Threads</div>
+            <div class="product-price">$48</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FIND YOUR STYLE
+  ═══════════════════════════════════════ -->
+  <section class="style-section" id="styles">
+    <div class="section-wrap">
+
+      <div class="section-header reveal">
+        <h2 class="section-title-lg">FIND YOUR AFRICAN STYLE</h2>
+      </div>
+
+      <div class="style-grid">
+
+        <div class="style-card reveal">
+          <img src="images/traditional wear.png" alt="Traditional Wear"/>
+          <div class="style-card-overlay">
+            <span class="style-card-label">Traditional Wear</span>
+            <span class="style-card-count">840+ pieces</span>
+          </div>
+        </div>
+
+        <div class="style-card reveal">
+          <img src="images/street fashion.png" alt="Street Fashion"/>
+          <div class="style-card-overlay">
+            <span class="style-card-label">Street Fashion</span>
+            <span class="style-card-count">620+ pieces</span>
+          </div>
+        </div>
+
+        <div class="style-card reveal">
+          <img src="images/luxury fashion.png" alt="Luxury Fashion"/>
+          <div class="style-card-overlay">
+            <span class="style-card-label">Luxury Fashion</span>
+            <span class="style-card-count">320+ pieces</span>
+          </div>
+        </div>
+
+        <div class="style-card reveal">
+          <img src="images/modern casual.png" alt="Modern Casual"/>
+          <div class="style-card-overlay">
+            <span class="style-card-label">Modern Casual</span>
+            <span class="style-card-count">510+ pieces</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       COMMUNITY TESTIMONIALS
+  ═══════════════════════════════════════ -->
+  <section class="community-section" id="community">
+    <div class="community-inner">
+      <h2 class="community-title reveal">VOICES FROM THE COMMUNITY</h2>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="images/Adaeze Okafor Image.png" alt="Adaeze Okafor"/>
+            </div>
+            <div>
+              <div class="testimonial-name">Adaeze Okafor</div>
+              <div class="testimonial-role">Fashion Buyer · Lagos</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"I've never felt so connected to African fashion. AFRITEX introduced me to designers I never would have found on Instagram. Every piece I've ordered has been extraordinary quality."</p>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="images/Amina Threads Image.png" alt="Kwame Mensah"/>
+            </div>
+            <div>
+              <div class="testimonial-name">Kwame Mensah</div>
+              <div class="testimonial-role">Designer · Accra</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"AFRITEX gave my brand a real storefront. My sales doubled in the first month — customers from the UK and US discovered my kente pieces because of this platform."</p>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="images/david Njo Image.png" alt="David Kipnge"/>
+            </div>
+            <div>
+              <div class="testimonial-name">David Kipnge</div>
+              <div class="testimonial-role">Stylist · Nairobi</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"I always look for African fashion every season. AFRITEX makes it so easy to discover new talents and order with confidence. The order tracking is seamless."</p>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="images/Amino Diallo.png" alt="Amara Diallo"/>
+            </div>
+            <div>
+              <div class="testimonial-name">Amara Diallo</div>
+              <div class="testimonial-role">Customer · Dakar</div>
+            </div>
+          </div>
+          <p class="testimonial-text">"I love how AFRITEX celebrates our culture. I found a handwoven piece that reminded me of my grandmother's fabric. It means everything to support our own designers."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA SECTION
+  ═══════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title reveal">Turn Your Craft Into A Global Brand</h2>
+      <p class="cta-subtitle reveal">Join a growing community of African designers reaching customers worldwide.<br/>Showcase your work. Tell your story. Build your future.</p>
+      <div class="cta-features reveal">
+        <div class="cta-feature-item">Reach International<span>Sell to customers across Africa &amp; the diaspora</span></div>
+        <div class="cta-feature-item">Manage Products Easily<span>Listings, inventory &amp; orders in one dashboard</span></div>
+        <div class="cta-feature-item">Transparent Order Tracking<span>Customers track every order in real-time</span></div>
+        <div class="cta-feature-item">Dedicated Support<span>Our team is here to help you grow</span></div>
+      </div>
+      <a href="pages/designersignup.html" class="btn-cta-gold reveal">Start Free Today</a>
+
+      <p class="cta-tagline reveal">Lagos · Accra · Nairobi</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline-text">AFRITEX is more than fashion. It's a movement.<br/>Join the community celebrating culture in creativity and commerce.</p>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About AFRITEX</h4>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Mission &amp; Vision</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+          <div class="footer-social">
+            <div class="social-icon">f</div>
+            <div class="social-icon">𝕏</div>
+            <div class="social-icon">in</div>
+            <div class="social-icon">▶</div>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Customer Support</h4>
+          <ul>
+            <li><a href="#">Help Centre</a></li>
+            <li><a href="#">Track My Order</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>For Designers</h4>
+          <ul>
+            <li><a href="pages/designersignup.html">Start Selling</a></li>
+            <li><a href="#">Seller Dashboard</a></li>
+            <li><a href="#">Pricing Plans</a></li>
+            <li><a href="#">Designer Guidelines</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Seller Agreement</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">Twitter / X</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+<div class="footer-brand-row">
+        <img src="images/afritex logo.jpeg" alt="AFRITEX" class="footer-logo-img"/>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-bottom-text">© 2026 AFRITEX. All rights reserved. Built by Group 14 · TechCrush Capstone 2026.</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/api.js"></script>  
+  <script type="module" src="scripts/script.js"></script>
+</body>
+</html>

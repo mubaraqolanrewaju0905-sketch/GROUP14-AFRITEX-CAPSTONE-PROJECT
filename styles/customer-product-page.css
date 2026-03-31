@@ -1,0 +1,364 @@
+body{
+  font-family: 'Poppins', sans-serif;
+  margin:0;
+  background:#f5f5f5;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:#fff;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:600;
+}
+
+.navbar nav a{
+  margin:0 10px;
+  text-decoration:none;
+  color:#333;
+  font-size:14px;
+}
+
+.icons i{
+  margin-left:15px;
+}
+
+/* SEARCH */
+.search-bar{
+  display:flex;
+  justify-content:center;
+  padding:15px;
+  background:#fff;
+}
+
+.search-bar input{
+  width:50%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:20px 0 0 20px;
+}
+
+.search-bar button{
+  padding:10px 15px;
+  border:none;
+  background:#f4a100;
+  color:#fff;
+  border-radius:0 20px 20px 0;
+}
+
+/* LAYOUT */
+.container{
+  display:flex;
+  gap:20px;
+  padding:20px;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:250px;
+}
+
+.box{
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.orange{
+  background:#f4a100;
+  color:#fff;
+  padding:10px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.sidebar ul{
+  list-style:none;
+  padding:0;
+}
+
+.sidebar ul li{
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.sidebar select{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+
+.btn{
+  width:100%;
+  padding:10px;
+  background:#f4a100;
+  border:none;
+  color:#fff;
+  border-radius:8px;
+}
+
+/* PROMO */
+.promo{
+  background:#fff3e0;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+}
+
+/* MAIN */
+.main{
+  flex:1;
+}
+
+/* SECTION */
+.section {
+  border: 2px solid #f4a100;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 25px;
+  background: #fafafa;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:15px;
+}
+
+.top h2{
+  font-size:20px;
+}
+
+.top button{
+  border:1px solid #f4a100;
+  background:transparent;
+  color:#f4a100;
+  padding:5px 15px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.top button{
+  border:1px solid #f4a100;
+  background:transparent;
+  color:#f4a100;
+  padding:5px 15px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+/* PRODUCTS */
+.products{
+  display:flex;
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:#fff;
+  padding:12px;
+  border-radius:10px;
+  width:180px;
+}
+
+.card img{
+  width:100%;
+  height:130px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.card p{
+  font-size:13px;
+  margin:8px 0;
+}
+
+.card span{
+  color:#f4a100;
+  font-weight:600;
+  font-size:14px;
+}
+
+.stars i{
+  color:gold;
+  font-size:12px;
+}
+
+
+.box select{
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+
+  /* THIS PART MAKES IT LOOK LIKE DESIGN */
+  appearance: none;
+  background: #fff url("https://cdn-icons-png.flaticon.com/512/32/32195.png") no-repeat right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:600;
+  font-size:20px;
+}
+
+.logo img{
+  width:35px;
+  height:35px;
+}
+
+.promo{
+  background:#f4a100;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.promo img{
+  width:200px;
+  margin-bottom:10px;
+}
+
+.promo .big{
+  font-weight:600;
+  font-size:1px;
+}
+
+
+
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 30px 20px;
+  margin-top: 30px;
+}
+
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+
+.footer h4, .footer h3 {
+  margin-bottom: 10px;
+}
+
+.footer p {
+  font-size: 12px;
+  color: #ccc;
+  
+}
+
+.copy {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 11px;
+}
+
+/* === SIDEBAR POLISH === */
+
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.sidebar ul li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* Add arrow automatically */
+.sidebar ul li::after{
+  content:"›";
+  color:#999;
+}
+
+/* === FILTER SPACING FIX === */
+
+.box h3{
+  margin-bottom:10px;
+}
+
+.box select{
+  margin-bottom:12px;
+}
+
+ /* SIDEBAR LAYOUT */
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:20px; /* THIS creates space between boxes */
+}
+
+/* EACH CARD */
+.box{
+  background:#fff;
+  padding:15px;
+  border-radius:12px;
+}
+
+/* === PROMO FINAL LOOK === */
+.promo{
+  background:#fff3e0;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.promo img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.promo .big{
+  font-size:16px;
+  font-weight:600;
+}
+
+.promo button{
+  margin-top:10px;
+  padding:8px 15px;
+  background:#f4a100;
+  color:#fff;
+  border:none;
+  border-radius:20px;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.section-header button{
+  background:none;
+  border:none;
+  color:#f4a100;
+  cursor:pointer;
+  font-weight:500;
+}
+

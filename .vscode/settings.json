@@ -1,0 +1,8 @@
+{
+  "liveServer.settings.port": 5501,
+  "git.ignoreLimitWarning": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

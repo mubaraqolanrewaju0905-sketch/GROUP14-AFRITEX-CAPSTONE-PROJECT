@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afritex | Designer Signup</title>
+    <link rel="stylesheet" href="../styles/designersignup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <button class="back-arrow" onclick="history.back()">←</button>
+            <h2>Create a Designer Account</h2>
+            
+            <form id="designerForm">
+                <p class="section-label">Personal Details</p>
+                <input type="text" id="fullName" placeholder="Full Name" required>
+                <br>
+        
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" data-target="password">👁️</span>
+                </div>
+                
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <span class="toggle-password" data-target="confirmPassword">👁️</span>
+                </div>
+
+                <div class="password-criteria">
+                    <p>Password must contain:</p>
+                    <div class="criteria-item"><span id="lengthCheck" class="criteria-symbol">✗</span> At least 8 characters</div>
+                    <div class="criteria-item"><span id="upperCheck" class="criteria-symbol">✗</span> At least one uppercase letter</div>
+                    <div class="criteria-item"><span id="numberCheck" class="criteria-symbol">✗</span> At least one number</div>
+                    <div class="criteria-item"><span id="specialCheck" class="criteria-symbol">✗</span> At least one special character</div>
+                </div>
+            
+                <div class="row">
+                    <select id="country" class="half-width" required>
+                        <option value="" disabled selected>Select Country</option>
+                        <option value="gh">Ghana</option>
+                        <option value="ng">Nigeria</option>
+                        <option value="ke">Kenya</option>
+                    </select>
+                </div>
+
+                <div class="phone-input">
+                    <select id="countryCode">
+                        <option value="+233">+233</option>
+                        <option value="+234">+234</option>
+                        <option value="+254">+254</option>
+                    </select>
+                    <input type="tel" id="phoneNumber" placeholder="Phone Number" required>
+                </div>
+                 
+                <input type="email" id="email" placeholder="Email" required>
+
+                <div class="upload-container">
+                    <div class="upload-section">
+                        <p class="section-label">Profile Photo</p>
+                        <div class="upload-box" id="profileUploadBox">
+                            <input type="file" id="profileFile" accept="image/*" hidden>
+                            <span id="removeProfilePhoto" title="Remove Photo">×</span>
+                            <span class="upload-icon" id="profileUploadIcon"><img src="../images/upload-icon.png" alt="Upload"></span>
+                            <img id="profileImagePreview" src="" alt="Preview">
+                        </div>
+                    </div>
+                    <div class="upload-section">
+                        <p class="section-label">Upload ID</p>
+                        <div class="upload-box" id="uploadBox">
+                            <input type="file" id="idFile" accept="image/*" hidden>
+                            <span id="removePhoto" title="Remove Photo">×</span>
+                            <span class="upload-icon" id="uploadIcon"><img src="../images/upload-icon.png" alt="Upload"></span>
+                            <img id="imagePreview" src="" alt="Preview">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="section-label">Portfolio Link</p>
+                <input type="url" id="portfolioUrl" placeholder="URL" >
+                <br>
+                <p class="join-text">I am an independent designer based in Africa<br>
+                <span>Join 1,247 designers already selling.</span></p>
+                <br>
+               <a href="../pages/designersignin.html"><button type="submit" class="signup-btn" id="submitBtn">Sign Up</button></a>
+            </form>
+
+            <div class="divider"> 
+                <a href=""></a><hr> <span>Forget Password</span> <hr>
+            </div>
+<p id="error-message" class="error-message" style="display: none;">An error occurred. Please try again.</p>
+            <div class="social-row">
+                <button type="button" class="social-btn" id="googleBtn">Continue with <img src="../images/google-icon.png" alt="G" width="15"></button>
+                <button type="button" class="social-btn" id="appleBtn">Continue with <img src="../images/apple-icon.png" alt="A" width="15"></button>
+            </div>
+
+            <p class="signin-link">Already have an account? <a href="../pages/designersignin.html">Sign in</a></p>
+
+            <footer class="footer-text">
+                <strong>AFRITEX</strong> | African Designers X Global Customers
+            </footer>
+        </div>
+    </div>
+    <!-- load the designer signup logic -->
+    <script src="../scripts/designersignup.js"></script>
+    <script type="module" src="../scripts/designersignup.js"></script>
+</body>
+</html>

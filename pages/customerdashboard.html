@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer | Dashboard</title>
+    <link rel="stylesheet" href="../styles/customerdashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/bold/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+</head>
+<body>
+    <div class="topbar">
+        <nav class="navbar">
+            <div class="logo"><img src="../images/afritex logo.jpeg" alt="Afritex Logo"></div>
+            <div><h2 class="Afri">AFRITEX</h2></div>
+            <div class="search-bar" style="position: relative; display: inline-block;">
+                <input type="text" placeholder="Search" class="search-bar" style="padding-left: 2em;">
+                <i class="ph-bold ph-magnifying-glass" style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #888;"></i>
+            </div>
+
+            <div class="nav-icons">
+            <button class="nav-icon" ><i class="ph ph-shopping-cart"></i></button>
+            <button class="nav-icon"><i class="ph ph-bell"></i></i></button>
+            <button class="nav-icon" ><i class="ph ph-chat-text"></i></i></button>
+            <button class="nav-icon" ><i class="ph ph-user-circle"></i></button>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="Dashboard">
+        <div class="sidebar">
+            <ul class="board">
+                <div class="main-links">
+                    <li><button type="button"><i class="ph-bold ph-house"></i> Overview</button></li>
+                   <li><button type="button"><i class="ph-bold ph-plus"></i> Add Products</button></li>
+                    <a href="../pages/customer-product-page.html"><li><button type="button"><i class="ph-bold ph-heart"></i> Check Products</button></li></a>
+                    <li><button type="button"><i class="ph-bold ph-list"></i> Orders</button></li>
+                    <a href="../pages/paymentdashboard.html"><li><button type="button"><i class="ph-bold ph-tag"></i> Payment Methods</button></li></a>
+                    <li><button type="button"><i class="ph ph-gear"></i> Account Settings</button></li>
+                </div>
+                <div class="bottom-links">
+                    <li><button type="button"><i class="ph ph-headset"></i> Support/Help</button></li>
+                    <li><button type="button"><i class="ph ph-power"></i> Logout</button></li>
+                </div>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Welcome back Azzy!</h2>
+            <p>Fri, 6 March 2026</p>
+            <div class="stats">
+                <div class="stat">
+                    <p>Total Orders</p>
+                    <h3>12</h3>
+                    <p>Total Orders made on Afritex</p>
+                </div>
+                <div class="stat">
+                    <p>Active Orders</p>
+                    <h3>10</h3>
+                    <p>Orders currently shipped</p>
+                </div>
+                <div class="stat">
+                    <p>Designers Supported</p>
+                    <h3>123</h3>
+                    <p>Designers purchased from</p>
+                </div>
+                <div class="stat">
+                    <p>Countries Shopped</p>
+                    <div class="countries">
+                    <h3 class="3">3</h3>
+                    <img class="country" src="../images/NG flag.png" alt="Nigeria Flag">
+                    <img class="country" src="../images/GH flag.png" alt="Ghana Flag">
+                    <img class="country" src="../images/SA flag.png" alt="South Africa Flag">
+                    </div>
+                    <p>Origin purchased from</p>
+                </div>
+            </div>
+                <div class="track-order">
+                    <h3>Track Your Order</h3>
+                    <input type="text" placeholder="Enter Order Number" class="order-input">
+                    <button class="track-btn">Track</button>
+                </div>
+            <div class="order-histories">
+            <h3 class="history">Order History</h3>
+            <div class="history-lists">
+                <p class="alpha-history">All Orders</p>
+                <p class="history-list">Processing</p>
+                <p class="history-list">Shipped</p>
+                <p class="history-list">Delivered</p>
+                <p class="history-list">Cancelled </p>
+            </div>
+            <table>
+                <tr class="table-head">
+                    <th>Product</th>
+                    <th>Order ID</th>
+                    <th>Designer</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><img src="../images/ankara bracelet.jpeg" alt="">Ankara Bracelet</td>
+                    <td>#AFRI1208</td>
+                    <td>House of Angela</td>
+                    <td>Feb 21</td>
+                    <td>Delivered</td>
+                    <td>$24</td>
+                    <td><button class="track-btn">Reorder</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/cowries necklace.jpeg" alt="">Cowrie Necklace</td>
+                    <td>#AFRI1208</td>
+                    <td>Zuri Accessories</td>
+                    <td>Feb 28</td>
+                    <td>Delivered</td>
+                    <td>$23</td>
+                    <td><button class="track-btn">Track</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/beaded earrings.jpeg" alt="">Beaded Earrings</td>
+                    <td>#AFRI1197</td>
+                    <td>Nairobi Craft</td>
+                    <td>Feb 29</td>
+                    <td>Delivered</td>
+                    <td>$12</td>
+                    <td><button class="track-btn">Reorder</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/ankara sandals.jpeg" alt=""> Ankara Sandals</td>
+                    <td>#AFRI1185</td>
+                    <td>Lagos Designers</td>
+                    <td>Mar 25</td>
+                    <td>Processing</td>
+                    <td>$23</td>
+                    <td><button class="track-btn">Cancel</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/tribal necklace.jpeg" alt="">Tribal Necklace</td>
+                    <td>#AFRI1288</td>
+                    <td>Sahara Craft</td>
+                    <td>Jul 01</td>
+                    <td>Delivered</td>
+                    <td>$34</td>
+                    <td><button class="track-btn">Reorder</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/adire tote bag.jpeg" alt="">Adire Tote Bag</td>
+                    <td>#AFRI1223</td>
+                    <td>Kemi Luxe</td>
+                    <td>Jul 11</td>
+                    <td>Processing</td>
+                    <td>$22</td>
+                    <td><button class="track-btn">Cancel</button></td>
+                    <td><button class="track-btn">Message</button></td>
+                </tr>
+            </table>         
+            </div>
+        <div class="Products">
+            <h1>Saved Products</h1>
+            <div class="new-products">
+                <div class="new-product">
+                    <div class="product-info">
+                    <img src="../images/ankara bracelet.jpeg" alt="Batik Kimono">
+                    <div class="product-details">
+                        <p class="product-name">Batik Kimono</p>
+                        <p>★ 4.6</p>
+                    </div>
+                    <div class="product-details">
+                        <p class="product-designer">House of Angela</p>
+                        <p class="product-price">$56</p>
+                    </div>
+                    </div>
+                    <div><button class="track-btn">Add to cart</button></div>
+                </div>
+                <div class="new-product">
+                    <div class="product-info">
+                    <img src="../images/cowries necklace.jpeg" alt="Cowries Necklace">
+                    <div class="product-details">
+                        <p class="product-name">Cowries Necklace</p>
+                        <p>★ 4.6</p>
+                    </div>
+                    <div class="product-details">
+                        <p class="product-designer">Zuri Accessories</p>
+                        <p class="product-price">$23</p>
+                    </div>
+                    </div>
+                    <div><button class="track-btn">Add to cart</button></div>
+                </div>
+                <div class="new-product">
+                    <div class="product-info">
+                    <img src="../images/adire tote bag.jpeg" alt="Adire Tote Bag">
+                    <div class="product-details">
+                        <p class="product-name">Adire Tote Bag</p>
+                        <p>★ 4.6</p>
+                    </div>
+                    <div class="product-details">
+                        <p class="product-designer">Kemi Luxe</p>
+                        <p class="product-price">$22</p>
+                    </div>
+                    </div>
+                    <div><button class="track-btn">Add to cart</button></div>
+                </div>
+                <div class="new-product">
+                    <div class="product-info">
+                    <img src="../images/cowries earrings.jpeg" alt="Beaded Earrings">
+                    <div class="product-details">
+                        <p class="product-name">Beaded Earrings</p>
+                        <p>★4.6</p>
+                    </div>
+                    <div class="product-details">
+                        <p class="product-designer">Nairobi Craft</p>
+                        <p class="product-price">$12</p>
+                    </div>
+                    </div>
+                    <div><button class="track-btn">Add to cart</button></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script type="module" src="../scripts/customerdashboard.js"></script>
+    <script src="../scripts/customerdashboard.js"></script>
+</body>
+</html>

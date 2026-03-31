@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afritex | Designer Dashboard</title>
+    <link rel="stylesheet" href="../styles/designerdashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <button id="sidebarToggle" class="sidebar-toggle" aria-label="Open navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="logo">
+            <img src="../images/afritex logo.jpeg" alt="Afritex logo" class="logo-img">
+            <h1>AFRITEX</h1>
+        </div>
+        <div class="search-bar">
+            <!-- use solid style and correct name for FA6 magnifying glass -->
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            <input type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="top-icons">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-regular fa-comment-dots"></i>
+            <div class="user-profile">
+                <img id="profilePhoto" src="" alt="Profile" class="profile-photo">
+                <i class="fa-regular fa-user-circle" id="defaultProfileIcon"></i>
+                <i class="fa-solid fa-chevron-down chevron-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+        <aside class="sidebar">
+            <nav>
+                <a href="#" class="active"><i class="fa-solid fa-house"></i> Overview</a>
+                <a href="#"><i class="fa-solid fa-receipt"></i> Order History</a>
+                <a href="#"><i class="fa-solid fa-truck-fast"></i> Track Orders</a>
+                <a href="../pages/designer-product-page.html"><i class="fa-regular fa-heart"></i> Saved Products</a>
+                <a href="#" id="profileLink"><i class="fa-regular fa-user"></i> Profile Information</a>
+                <a href="#"><i class="fa-solid fa-address-book"></i> Address Book</a>
+                <a href="#"><i class="fa-regular fa-credit-card"></i> Sales and Summary</a>
+                <a href="../pages/paymentdashboard.html" class="Payment Mehods">Payment Methods</a>
+
+                <a href="#"><i class="fa-solid fa-gear"></i> Account Settings</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#"><i class="fa-solid fa-headset"></i> Support/Help</a>
+                <a href="#" class="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="welcome-header">
+                <h2>Welcome back, Umar!</h2>
+                <p id="currentDate">Fri, 6 March 2026</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <p><i class="fa-solid fa-bag-shopping"></i> Total Products</p>
+                    <h3 id="totalProductsCount">912</h3>
+                    <span>Current Product listed</span>
+                </div>
+                <div class="stat-card">
+                    <p><i class="fa-solid fa-box"></i> Total Orders</p>
+                    <h3>1056</h3>
+                    <span>Orders received across</span>
+                </div>
+                <div class="stat-card">
+                    <p><i class="fa-solid fa-chart-line"></i> Total Sales <span class="badge">12%</span></p>
+                    <h3>$3,570</h3>
+                    <span>Revenue generated from orders</span>
+                </div>
+                <div class="stat-card">
+                    <p><i class="fa-regular fa-clock"></i> Pending Orders</p>
+                    <h3>72</h3>
+                    <span>Awaiting Orders</span>
+                </div>
+            </div>
+
+            <div class="tables-grid">
+                <div class="card products-card">
+                    <div class="card-header">
+                        <h3>Manage Products</h3>
+                        <button id="addProductBtn" class="btn-primary">Add New Products</button>
+                    </div>
+                    <div class="table-header">
+                        <span>Product</span>
+                        <span>Price</span>
+                        <span>Stock</span>
+                        <span>Status</span>
+                    </div>
+                    <div id="productsList" class="items-list">
+                        </div>
+                </div>
+
+                <div class="card orders-card">
+                    <div class="card-header">
+                        <h3>Recent Orders</h3>
+                        <a href="#" class="view-more">View More</a>
+                    </div>
+                    <div class="tabs">
+                        <button class="tab active" data-tab="All">All Orders</button>
+                        <button class="tab" data-tab="Pending">Pending</button>
+                        <button class="tab" data-tab="Processing">Processing</button>
+                        <button class="tab" data-tab="Shipped">Shipped</button>
+                    </div>
+                    <div id="ordersList" class="items-list orders-list">
+                        <div class="order-item" data-status="Shipped">
+                            <div class="order-info">
+                                <img src="../images/Fulani Threaded Earrings.jpg" alt="Fulani Earrings">
+                                <div class="order-text">
+                                    <h4>Fulani Earrings</h4>
+                                    <p>#AFR11205 <br> Zuri Accessories <br> Feb 21</p>
+                                </div>
+                            </div>
+                            <div class="order-price">
+                                <h4>$17</h4>
+                                <span>Shipped</span>
+                            </div>
+                        </div>
+                        <div class="order-item" data-status="Shipped">
+                            <div class="order-info">
+                                <img src="../images/zulu-necklace.jpg" alt="Zulu Necklace">
+                                <div class="order-text">
+                                    <h4>Zulu Necklace</h4>
+                                    <p>#AFR11207 <br> Zulu Kraft <br> Feb 21</p>
+                                </div>
+                            </div>
+                            <div class="order-price">
+                                <h4>$20</h4>
+                                <span>Shipped</span>
+                            </div>
+                        </div>
+                        <div class="order-item" data-status="Processing">
+                            <div class="order-info">
+                                <img src="../images/dyed-kaftan.jpg" alt="Dyed Kaftan">
+                                <div class="order-text">
+                                    <h4>Dyed Kaftan</h4>
+                                    <p>#AFR11228 <br> Lagos Designs <br> Feb 21</p>
+                                </div>
+                            </div>
+                            <div class="order-price">
+                                <h4>$42</h4>
+                                <span>Processing</span>
+                            </div>
+                        </div>
+                        <div class="order-item" data-status="Pending">
+                            <div class="order-info">
+                                <img src="../images/adire-fabrics.webp" alt="Adire Fabric">
+                                <div class="order-text">
+                                    <h4>Adire Fabric</h4>
+                                    <p>#AFR11229 <br> Ikeja Textiles <br> Mar 5</p>
+                                </div>
+                            </div>
+                            <div class="order-price">
+                                <h4>$60</h4>
+                                <span>Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="modal-title">Add New Product</h2>
+            
+            <form id="newProductForm">
+                <label>Product Name</label>
+                <input type="text" id="prodName" placeholder="e.g. Kente Scarf" required>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label>Price ($)</label>
+                        <input type="number" id="prodPrice" placeholder="0.00" required>
+                    </div>
+                    <div class="form-col">
+                        <label>Stock (Units)</label>
+                        <input type="number" id="prodStock" placeholder="0" required>
+                    </div>
+                </div>
+
+                <label>Product Image</label>
+                <div class="upload-box" id="prodImgBox">
+                    <input type="file" id="prodImage" accept="image/*" hidden>
+                    <span class="upload-icon" id="prodImgIcon">☁️</span>
+                    <img id="prodImgPreview" src="" alt="Preview">
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- profile information modal (hidden until profile link clicked) -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="profileClose">&times;</span>
+            <h2 class="modal-title">Designer Profile</h2>
+            
+            <div class="profile-modal-header">
+                <img id="modalProfilePhoto" src="" alt="Profile Photo" class="modal-profile-photo">
+            </div>
+            
+            <form id="profileForm">
+                <label>Full Name</label>
+                <input type="text" id="profileName" required>
+                <label>Email</label>
+                <input type="email" id="profileEmail" required>
+                <label>Country</label>
+                <input type="text" id="profileCountry">
+                <label>Phone</label>
+                <input type="text" id="profilePhone">
+                <label>Portfolio URL</label>
+                <input type="url" id="profilePortfolio">
+                <button type="submit" class="btn-primary btn-full">Save Profile</button>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="../scripts/designerdashboard.js"></script>
+    <script src="../scripts/designerdashboard.js"></script>
+</body>
+</html>
