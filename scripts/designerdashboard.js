@@ -60,15 +60,36 @@ window.toggleMobileNav = toggleMobileNav;
 // DOM READY
 // ══════════════════════════════════════
 document.addEventListener("DOMContentLoaded", async () => {
-  // Set current date
+  // Set current date immediately
   const dateOptions = {
     weekday: "short",
     day: "numeric",
     month: "long",
     year: "numeric",
   };
-  document.getElementById("currentDate").innerText =
-    new Date().toLocaleDateString("en-GB", dateOptions);
+  const currentDateEl = document.getElementById("currentDate");
+  if (currentDateEl) {
+    currentDateEl.innerText = new Date().toLocaleDateString(
+      "en-GB",
+      dateOptions,
+    );
+  }
+
+  // Set welcome message from localStorage immediately
+  const localDesignerProfile = localStorage.getItem("designerProfile");
+  if (localDesignerProfile) {
+    try {
+      const profile = JSON.parse(localDesignerProfile);
+      const name =
+        profile.name || profile.fullName || profile.username || "Designer";
+      const welcomeHeader = document.getElementById("designerWelcome");
+      if (welcomeHeader) {
+        welcomeHeader.innerText = `Welcome back, ${name.split(" ")[0]}!`;
+      }
+    } catch (e) {
+      console.warn("Error parsing local designer profile:", e);
+    }
+  }
 
   // Load profile from API or localStorage
   let designerData = null;
@@ -102,8 +123,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       designerData.name ||
       designerData.username ||
       "Designer";
-    document.querySelector(".welcome-header h2").innerText =
-      `Welcome back, ${displayName.split(" ")[0]}!`;
+    const welcomeHeader = document.getElementById("designerWelcome");
+    if (welcomeHeader) {
+      welcomeHeader.innerText = `Welcome back, ${displayName.split(" ")[0]}!`;
+    }
 
     if (designerData.profilePhotoData) {
       const profilePhoto = document.getElementById("profilePhoto");

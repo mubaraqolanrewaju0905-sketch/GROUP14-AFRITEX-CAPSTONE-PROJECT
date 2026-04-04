@@ -294,6 +294,27 @@ body {
   font-size: 12px;
   color: var(--text-light);
 }
+
+@media (max-width: 768px) {
+  .welcome-header h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .welcome-header p {
+    font-size: 11px;
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-header h2 {
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+  .welcome-header p {
+    font-size: 10px;
+  }
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -596,6 +617,21 @@ body {
     z-index: 1000;
     margin-bottom: 0;
     border-radius: 0;
+  }
+
+  .sidebar-bottom {
+    margin-top: auto;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+  }
+
+  .sidebar-bottom a {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .logout {
+    color: red !important;
   }
 
   .dashboard-container.sidebar-open .sidebar {

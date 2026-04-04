@@ -193,10 +193,34 @@ li {
 .main-content p {
   margin: 10px;
   color: rgb(136, 132, 132);
+  font-size: 14px;
 }
 .main-content h2 {
   margin: 0;
   margin-bottom: 20px;
+  font-size: 28px;
+}
+
+@media (max-width: 768px) {
+  .main-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .main-content p {
+    font-size: 12px;
+    margin: 5px 0 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .main-content p {
+    font-size: 11px;
+    margin: 3px 0 10px 0;
+  }
 }
 .stats {
   display: flex;

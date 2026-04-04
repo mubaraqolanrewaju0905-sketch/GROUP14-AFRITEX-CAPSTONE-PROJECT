@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const profile = JSON.parse(localProfile);
       const name =
         profile.name || profile.fullName || profile.username || "Customer";
-      const welcome = document.querySelector(".main-content h2");
+      const welcome = document.getElementById("welcomeMessage");
       if (welcome) welcome.textContent = `Welcome back, ${name}!`;
     } catch (e) {
       console.warn("Error parsing local profile:", e);
@@ -115,9 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ── STEP 1.6: Set current date immediately ──
-  const dateEl = JSON.parse(localProfile);
-  document.getElementById("todayDate") ||
-    document.querySelector(".main-content p");
+  const dateEl = document.getElementById("todayDate");
   if (dateEl) {
     const options = {
       weekday: "long",
@@ -157,7 +155,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       profileData.fullName ||
       profileData.username ||
       "Customer";
-    const welcome = document.querySelector(".main-content h2");
+    const welcome = document.getElementById("welcomeMessage");
     if (welcome) welcome.textContent = `Welcome back, ${name}!`;
   } else {
     localStorage.clear();
