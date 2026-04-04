@@ -19,12 +19,17 @@
 
 <!-- NAVBAR -->
 <header class="navbar">
+  <button class="hamburger-btn" onclick="toggleMobileNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <div class="logo">
   <img src="../images/Images/Afritex logo.png" alt="logo">
   <span>AFRITEX</span>
 </div>
-  <nav>
-    <a href="#">Home</a>
+  <nav class="nav-menu">
+    <a href="../index.html">Home</a>
     <a href="#">Shop</a>
     <a href="#">Product</a>
     <a href="#">Pages</a>
@@ -32,9 +37,9 @@
 
   <div class="icons">
     <i class="fa-solid fa-magnifying-glass"></i>
-<i class="fa-regular fa-user"></i>
-<i class="fa-regular fa-heart"></i>
-<i class="fa-solid fa-cart-shopping"></i>
+    <span class="customer-name" id="customerName"></span>
+    <i class="fa-regular fa-heart"></i>
+    <i class="fa-solid fa-cart-shopping"></i>
   </div>
 </header>
 
@@ -417,6 +422,30 @@
   <p class="copy">© 2026 AFRITEX</p>
 </footer>
 
+<script>
+// Display customer name
+document.addEventListener('DOMContentLoaded', () => {
+  const customerProfile = localStorage.getItem('customerProfile');
+  if (customerProfile) {
+    try {
+      const profile = JSON.parse(customerProfile);
+      const name = profile.name || profile.fullName || profile.username || '';
+      if (name) {
+        document.getElementById('customerName').textContent = name;
+      }
+    } catch (e) {
+      console.warn('Error parsing customer profile:', e);
+    }
+  }
+});
+
+// Mobile navigation toggle
+function toggleMobileNav() {
+  const nav = document.querySelector('.nav-menu');
+  if (nav) nav.classList.toggle('open');
+}
+window.toggleMobileNav = toggleMobileNav;
+</script>
 
 <script type="module" src="../scripts/product-list.js"></script>
 </body>

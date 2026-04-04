@@ -21,6 +21,7 @@ function toggleMobileNav() {
   const nav = document.getElementById('mobileNav');
   if (nav) nav.classList.toggle('open');
 }
+window.toggleMobileNav = toggleMobileNav;
 
 // ══════════════════════════════════════
 // SEARCH

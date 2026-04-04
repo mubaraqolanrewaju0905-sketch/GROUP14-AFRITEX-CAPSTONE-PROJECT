@@ -107,28 +107,27 @@ document.addEventListener("DOMContentLoaded", () => {
       if (result.success || result.status === "Success") {
         alert("Account created Successfully!...");
         console.log("API response:", result);
+        // Save profile to localStorage for signin (includes password for local fallback)
+        const customerData = {
+          fullName: fullName,
+          email,
+          password,
+          phoneNumber: phone,
+          country,
+          ...(result.user || {}),
+        };
+        localStorage.setItem("customerProfile", JSON.stringify(customerData));
+        const newToken = result.token || `local-test-token-${Date.now()}`;
+        localStorage.setItem("afritex_token", newToken);
+        localStorage.setItem("token", newToken);
+
+        // Clear form
+        form.reset();
+
+        // Redirect to customer sign-in page
+        window.location.href = "customersignin.html";
         return;
       }
-
-      // Save profile to localStorage for signin (includes password for local fallback)
-      const customerData = {
-        fullName: fullName,
-        email,
-        password,
-        phoneNumber: phone,
-        country,
-        ...(result.user || {}),
-      };
-      localStorage.setItem("customerProfile", JSON.stringify(customerData));
-      const newToken = result.token || `local-test-token-${Date.now()}`;
-      localStorage.setItem("afritex_token", newToken);
-      localStorage.setItem("token", newToken);
-
-      // Clear form
-      form.reset();
-
-      // Redirect to customer sign-in page
-      window.location.href = "customersignin.html";
     } catch (err) {
       console.error("Signup error:", err);
       alert("Signup failed: " + (err?.message || "Please try again"));

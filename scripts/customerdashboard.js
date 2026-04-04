@@ -5,6 +5,7 @@ async function apiRequest(endpoint, method = "GET", body = null) {
     method,
     headers: { "Content-Type": "application/json" },
   };
+
   if (token) config.headers.Authorization = "Bearer " + token;
   if (body) config.body = JSON.stringify(body);
 
@@ -17,7 +18,6 @@ async function apiRequest(endpoint, method = "GET", body = null) {
     return null;
   }
 }
-
 // ══════════════════════════════════════
 // DATA — will be replaced by API data
 // ══════════════════════════════════════
@@ -100,10 +100,38 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  // ── STEP 1.5: Set welcome from localStorage immediately ──
+  const localProfile = localStorage.getItem("customerProfile");
+  if (localProfile) {
+    try {
+      const profile = JSON.parse(localProfile);
+      const name =
+        profile.name || profile.fullName || profile.username || "Customer";
+      const welcome = document.querySelector(".main-content h2");
+      if (welcome) welcome.textContent = `Welcome back, ${name}!`;
+    } catch (e) {
+      console.warn("Error parsing local profile:", e);
+    }
+  }
+
+  // ── STEP 1.6: Set current date immediately ──
+  const dateEl = JSON.parse(localProfile);
+  document.getElementById("todayDate") ||
+    document.querySelector(".main-content p");
+  if (dateEl) {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    dateEl.textContent = new Date().toLocaleDateString("en-US", options);
+  }
+
   // ── STEP 2: Fetch profile from API (fallback to localStorage) ──
   let profileData = null;
   try {
-    const profile = await apiRequest("/customer/profile");
+    const profile = await apiRequest("/customer/profile", "GET", null, true);
     if (profile && (profile.name || profile.fullName || profile.username)) {
       profileData = profile;
     }
@@ -139,7 +167,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ── STEP 3: Fetch orders from API ──
   try {
-    const apiOrders = await apiRequest("/customer/orders");
+    const apiOrders = await apiRequest("/customer/orders", "GET", null, true);
     if (apiOrders && Array.isArray(apiOrders)) {
       orders = apiOrders; // ✅ replace static data with real API data
     }
@@ -149,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ── STEP 4: Fetch saved products from API ──
   try {
-    const apiSaved = await apiRequest("/customer/saved");
+    const apiSaved = await apiRequest("/customer/saved", "GET", null, true);
     if (apiSaved && Array.isArray(apiSaved)) {
       savedProducts = apiSaved; // ✅ replace static data with real API data
     }
@@ -158,18 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ── STEP 5: Set date ──
-  const dateEl =
-    document.getElementById("todayDate") ||
-    document.querySelector(".main-content p");
-  if (dateEl) {
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    dateEl.textContent = new Date().toLocaleDateString("en-US", options);
-  }
+  // Already set earlier
 
   // ── STEP 6: Animate counters ──
   document.querySelectorAll(".stat-value[data-target]").forEach((el) => {
@@ -192,18 +209,60 @@ document.addEventListener("DOMContentLoaded", async () => {
   initSearch();
   closeMenusOnOutsideClick();
 
-  // ── STEP 8: Logout ──
-  const logoutBtn =
-    document.querySelector(".logout") ||
-    document.querySelector(".bottom-links li:last-child button");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", (e) => {
+  //   // ── STEP 8: Logout ─
+  //   const logoutLink = document.querySelector("#logoutBtn");
+  //   if (logoutLink) {
+  //     logoutLink.addEventListener("click", (e) => {
+  //       e.preventDefault();
+  //       // Clear authentication data
+  //       localStorage.removeItem("token");
+  //       localStorage.removeItem("afritex_token");
+  //       localStorage.removeItem("customerProfile");
+  //       window.location.href = "../index.html";
+  //     });
+  //   }
+  //  });
+
+  // ── LOGOUT ──
+  const logoutLink = document.querySelector("#logoutBtn");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
       e.preventDefault();
-      localStorage.clear();
+      localStorage.removeItem("token");
+      localStorage.removeItem("afritex_token");
+      localStorage.removeItem("customerProfile");
+      alert("You have been logged out.");
       window.location.href = "../index.html";
     });
   }
+
+  // const Logout = document.getElementById("logoutBtn");
+  // Logout.addEventListener("click", async (e) => {
+  //   e.preventDefault();
+  //   console.log("js");
+  // try {
+  //   const result = await apiRequest("api/auth/logout", "POST", {
+  //     headers: {
+  //       "Authorization": `Bearer ${token}`
+  //     }
+  //   });
+  //   console.log("logout API response:", result);
+  // } catch (err) {
+  //   console.error("Error during logout:", err);
+  // }
 });
+//   const logoutBtn =
+//     document.querySelector(".logoutBtn") ||
+//     document.querySelector(".bottom-links li:last-child button");
+//   if (logoutBtn) {
+//     logoutBtn.addEventListener("click", (e) => {
+//       e.preventDefault();
+//       // localStorage.clear();
+//       // window.location.href = "../index.html";
+//       console.log("js");
+//     });
+//   }
+// });
 
 // ══════════════════════════════════════
 // RENDER ORDERS
