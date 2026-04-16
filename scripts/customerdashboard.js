@@ -1,12 +1,18 @@
-import { apiRequest } from "./api.js";
-async function apiRequest(endpoint, method = "GET", body = null) {
+const BASE_URL = "https://afritex.onrender.com";
+
+async function apiRequest(
+  endpoint,
+  method = "GET",
+  body = null,
+  withAuth = false,
+) {
   const token = localStorage.getItem("token");
   const config = {
     method,
     headers: { "Content-Type": "application/json" },
   };
 
-  if (token) config.headers.Authorization = "Bearer " + token;
+  if (withAuth && token) config.headers.Authorization = "Bearer " + token;
   if (body) config.body = JSON.stringify(body);
 
   try {
@@ -18,7 +24,7 @@ async function apiRequest(endpoint, method = "GET", body = null) {
     return null;
   }
 }
-// ══════════════════════════════════════
+
 // DATA — will be replaced by API data
 // ══════════════════════════════════════
 let orders = [
@@ -92,6 +98,8 @@ let currentFilter = "all";
 // SINGLE DOMContentLoaded
 // ══════════════════════════════════════
 document.addEventListener("DOMContentLoaded", async () => {
+  const welcome = document.getElementById("welcomeMessage");
+
   // ── STEP 1: Check login token ──
   const token =
     localStorage.getItem("token") || localStorage.getItem("afritex_token");
@@ -109,6 +117,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         profile.name || profile.fullName || profile.username || "Customer";
       const welcome = document.getElementById("welcomeMessage");
       if (welcome) welcome.textContent = `Welcome back, ${name}!`;
+      token = profile.token;
+      localStorage.setItem("token", token);
     } catch (e) {
       console.warn("Error parsing local profile:", e);
     }
@@ -127,20 +137,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // ── STEP 2: Fetch profile from API (fallback to localStorage) ──
-  let profileData = null;
+  let profileData = {};
   try {
-    const profile = await apiRequest("/customer/profile", "GET", null, true);
-    if (profile && (profile.name || profile.fullName || profile.username)) {
-      profileData = profile;
+    const profile = await apiRequest("/api/user/profile", "GET", null, true);
+    if (profile && profile.status == "success") {
+      profileData = profile.data;
+    } else {
+      if (welcome) welcome.textContent = "Please Login";
+      localStorage.clear();
+      window.location.href = "customersignin.html";
+      return;
     }
+    console.log(profile);
   } catch (err) {
     console.warn(
       "Profile fetch failed, using local profile if available:",
       err,
     );
   }
+  // console.log(profileData);
 
-  if (!profileData) {
+  if (!profileData || !profileData.fullname) {
     const local = localStorage.getItem("customerProfile");
     if (local) {
       try {
@@ -149,18 +166,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  if (profileData) {
-    const name =
-      profileData.name ||
-      profileData.fullName ||
-      profileData.username ||
-      "Customer";
-    const welcome = document.getElementById("welcomeMessage");
-    if (welcome) welcome.textContent = `Welcome back, ${name}!`;
-  } else {
+  if (profileData == undefined) {
+    if (welcome) welcome.textContent = "Please Login";
     localStorage.clear();
     window.location.href = "customersignin.html";
     return;
+  } else {
+    const name = profileData.fullname;
+    if (welcome) welcome.textContent = `Welcome back, ${name}!`;
   }
 
   // ── STEP 3: Fetch orders from API ──
@@ -391,9 +404,17 @@ function showTrackModal(orderId, status) {
     { label: "Out for Delivery", desc: "Your order is out for delivery" },
     { label: "Delivered", desc: "Your order has been delivered" },
   ];
-  const statusRank = { processing: 1, shipped: 3, delivered: 5, cancelled: 0 };
-  const currentRank = statusRank[status] || 0;
-
+  // const statusRank = { processing: 1, shipped: 3, delivered: 5, cancelled: 0 };
+  const statusRank = {
+    processing: 1,
+    shipped: 3,
+    "out for delivery": 4,
+    delivered: 5,
+    cancelled: 0,
+    "order placed": 1, // in case this status is used
+    placed: 1, // in case this status is used
+  };
+  const currentRank = statusRank[status.toLowerCase()] || 0;
   document.getElementById("trackSteps").innerHTML = steps
     .map((step, i) => {
       const rank = i + 1;
@@ -527,19 +548,23 @@ function showToast(msg) {
   if (toastTimer) clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
 }
-
-// ══════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 function getInitials(name) {
-  return name
-    .split(" ")
+  if (!name || typeof name !== "string" || !name.trim()) return "";
+  const words = name.trim().split(/\s+/);
+  if (words.length === 1) {
+    return words[0].charAt(0).toUpperCase();
+  }
+  return words
     .slice(0, 2)
-    .map((w) => w[0])
+    .map((w) => w.charAt(0))
     .join("")
     .toUpperCase();
 }
+// function getInitials(name) {
+//   return name
+//     .split(" ")
+//     .slice(0, 2)
+//     .map((w) => w[0])
+//     .join("")
+//     .toUpperCase();
+// }
